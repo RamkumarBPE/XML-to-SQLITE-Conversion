@@ -1,0 +1,11 @@
+C:\Users\rbalasubramanian\Documents\Visual Studio 2012\Projects\LDOCE\LDOCE\bin\Debug\x64\SQLite.Interop.dll
+C:\Users\rbalasubramanian\Documents\Visual Studio 2012\Projects\LDOCE\LDOCE\bin\Debug\x86\SQLite.Interop.dll
+C:\Users\rbalasubramanian\Documents\Visual Studio 2012\Projects\LDOCE\LDOCE\bin\Debug\LDOCE.exe.config
+C:\Users\rbalasubramanian\Documents\Visual Studio 2012\Projects\LDOCE\LDOCE\bin\Debug\LDOCE.exe
+C:\Users\rbalasubramanian\Documents\Visual Studio 2012\Projects\LDOCE\LDOCE\bin\Debug\LDOCE.pdb
+C:\Users\rbalasubramanian\Documents\Visual Studio 2012\Projects\LDOCE\LDOCE\bin\Debug\System.Data.SQLite.dll
+C:\Users\rbalasubramanian\Documents\Visual Studio 2012\Projects\LDOCE\LDOCE\bin\Debug\System.Data.SQLite.Linq.dll
+C:\Users\rbalasubramanian\Documents\Visual Studio 2012\Projects\LDOCE\LDOCE\bin\Debug\System.Data.SQLite.xml
+C:\Users\rbalasubramanian\Documents\Visual Studio 2012\Projects\LDOCE\LDOCE\obj\Debug\LDOCE.exe
+C:\Users\rbalasubramanian\Documents\Visual Studio 2012\Projects\LDOCE\LDOCE\obj\Debug\LDOCE.pdb
+C:\Users\rbalasubramanian\Documents\Visual Studio 2012\Projects\LDOCE\LDOCE\obj\Debug\LDOCE.csprojResolveAssemblyReference.cache

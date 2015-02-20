@@ -1,0 +1,79 @@
+CREATE TABLE [CORE](
+            
+            [id] VARCHAR NOT NULL PRIMARY KEY,
+            [type] VARCHAR,
+            [new] VARCHAR,
+            [src] VARCHAR,
+            [sortname] VARCHAR,
+            [online_only] VARCHAR,
+            [HWD] VARCHAR,
+            [PHRVBHWD] VARCHAR,
+            [HYPHENATION] VARCHAR,
+            [HOMNUM] VARCHAR,
+            [ADDITIONAL_INFO] VARCHAR,
+            [SEM] VARCHAR,
+            [SearchInflections] VARCHAR,
+            [SENSES] VARCHAR,
+            [SPOKEN_SECTS] VARCHAR,
+            [TAILS] VARCHAR,
+            [PHRVBENTRIES] VARCHAR
+            
+            );
+CREATE TABLE [Headword](
+            [ID] VARCHAR NOT NULL PRIMARY KEY,
+            [HWD] VARCHAR,
+            [HOMNUM] VARCHAR,
+            [POS] VARCHAR
+            );
+CREATE TABLE [WordSets](
+            [id] VARCHAR,
+            [name] VARCHAR,
+            [refid] VARCHAR,
+            [hwd] VARCHAR,
+            [pos] VARCHAR
+            );
+CREATE TABLE [etymology](
+            [id] VARCHAR PRIMARY KEY NOT NULL,
+            [hwd] VARCHAR,
+            [sense] VARCHAR
+            );
+CREATE TABLE [etymology_links](
+            [text] VARCHAR,
+            [id] VARCHAR NOT NULL PRIMARY KEY,
+            [key] VARCHAR
+            );
+CREATE TABLE [example_sound](
+            [text] VARCHAR,
+            [id] VARCHAR NOT NULL PRIMARY KEY,
+            [filename] VARCHAR
+            );
+CREATE TABLE [pictures](
+            [text] VARCHAR,
+            [id] VARCHAR NOT NULL,
+            [filename] VARCHAR
+            );
+CREATE TABLE [uk_hwdsound](
+            [text] VARCHAR,
+            [id] VARCHAR NOT NULL PRIMARY KEY,
+            [filename] VARCHAR
+            );
+CREATE TABLE [us_hwdsound](
+            [text] VARCHAR,
+            [id] VARCHAR NOT NULL PRIMARY KEY,
+            [filename] VARCHAR
+            );
+CREATE TABLE [verbtables](
+            [id] VARCHAR NOT NULL PRIMARY KEY,
+            [data] TEXT
+            );
+CREATE TABLE [verbtables_link](
+            
+            [id] VARCHAR NOT NULL PRIMARY KEY,
+            [key] VARCHAR
+            
+            );
+CREATE TABLE [wordsets_links](
+            [text] VARCHAR,
+            [id] VARCHAR NOT NULL,
+            [key] VARCHAR
+            );
