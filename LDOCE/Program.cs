@@ -910,7 +910,7 @@ namespace LDOCE
                         PHRVBHWD = e.Element("Head").Element("PHRVBHWD").ElementValueNull(),
                         HYPHENATION = e.Element("Head").Element("HYPHENATION").ElementValueNull(),
                         HOMNUM = e.Element("Head").Element("HOMNUM").ElementValueNull(),
-                        ADDITIONAL_INFO = getAdditionalInfo(e.Element("Head")),
+                        ADDITIONAL_INFO = e.Elements("Head") == null ? "" :getAdditionalInfo(cleanXMLByRemovingNewLinesAndTabs(e.Element("Head").ToString(SaveOptions.DisableFormatting))),
                         SEM = e.Element("Head").Element("SEM").ElementValueNull(),
                         SearchInflections = e.Element("Head").Element("SearchInflections") == null ? "" : NestedToString(e.Element("Head").Element("SearchInflections").Elements("WF")),
                         SENSES = e.Elements("Entry") == null ? "" : applyRegex(e),
@@ -1077,7 +1077,7 @@ namespace LDOCE
             {
                 result += element.ToString(SaveOptions.DisableFormatting);
             }
-            result = result.Replace(System.Environment.NewLine, "");
+            result = cleanXMLByRemovingNewLinesAndTabs(result);
             return result;
         }
 
@@ -1096,9 +1096,16 @@ namespace LDOCE
            // resultString = filterSelfEnclosedTag(resultString);
             result = Regex.Replace(result, "<PhrVbEntry.*?</PhrVbEntry>", "");
            // Console.WriteLine(resultString);
-            result = result.Replace(System.Environment.NewLine,  "");
-            
+            result = cleanXMLByRemovingNewLinesAndTabs(result);
             return result;
+        }
+
+        private static string cleanXMLByRemovingNewLinesAndTabs(String xml)
+        {
+            String resultString = xml;
+            resultString = resultString.Replace(System.Environment.NewLine, "");
+            resultString = Regex.Replace(resultString, "[\t]{1,}", "");
+            return resultString;
         }
 
         //filterSelfEnclosedTag
@@ -1108,16 +1115,13 @@ namespace LDOCE
             return resultString;
         }
 
-        private static string getAdditionalInfo(XElement element)
+        private static string getAdditionalInfo(string xml)
         {
             string result = string.Empty;
-
-            String[] interestedNodes = { "FREQ", "AC", "LEVEL", "PronCodes", "Variant", "AmEVariant", "BrEVariant", "POS", "Inflections", "GRAM", "GEO", "REGISTERLAB", "LINKWORD" };
-
-            foreach (var node in interestedNodes)
-            {
-                result += element.Elements(node) == null ? "" : NestedToString(element.Elements(node));
-            }
+            //Removing the HWD, HOMNUM, SearchInflections and HYPHENATION tags as we have separate columns for them.
+            result = Regex.Replace(xml,"<HWD.*?</HWD>|<HOMNUM.*?</HOMNUM>|<HYPHENATION.*?</HYPHENATION>|<SearchInflections.*?</SearchInflections>","");
+            //Removing the enclosing tags
+            result = Regex.Replace(result, "<Head>|</Head>", "");
             return result;
         }
         #endregion
@@ -1198,15 +1202,15 @@ namespace LDOCE
         {
             SQLiteConnection.CreateFile("LDOCE.sqlite");
             //indexXML();
+            //wordsets_linksXML();
+            //verbtables_linkXML();
+            //etymology_linksXML();
+            //wordsetsXML();
             picsXML();
             exasoundXML();
             ussoundXML();
             uksoundXML();
-            //wordsets_linksXML();
-            //verbtables_linkXML();
-            //etymology_linksXML();
             verbtablesXML();
-            //wordsetsXML();
             etymologyXML();
             coreXML();
             createLookupFromCore();
